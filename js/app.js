@@ -89,6 +89,7 @@ imagesSection.addEventListener("click", function (e) {
 
     } if (count === 25) {
         list();
+        updateLists();
 
     }
 
@@ -154,6 +155,19 @@ function list() {
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function updateLists() {
+    var list = JSON.stringify(Mall.all);
+    localStorage.setItem("Appear", list);
+  }
+
+  function getLists() {
+    var list = localStorage.getItem("Appear");
+    if (list) {
+      Mall.all = JSON.parse(list);
+    }
+}
+getLists();
 
 
 
