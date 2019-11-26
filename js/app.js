@@ -78,31 +78,75 @@ imagesSection.addEventListener("click", function (e) {
         if (event.target.id !== "imagesSection") {
             for (let i = 0; i < Mall.all.length; i++) {
                 if (event.target.title === Mall.all[i].name) {
-                  Mall.all[i].votes++;
+                    Mall.all[i].votes++;
                 }
-              }
-            
+            }
+
             render();
 
         }
 
 
- } if (count === 25){
-     list();
- }
+    } if (count === 25) {
+        list();
+
+    }
 
 });
-function list (){
+function list() {
+    var votes = [];
+  var views = [];
+  var labels = [];
     var container = document.getElementById("listAppear");
     var ulEl = document.createElement("ul");
     container.appendChild(ulEl);
-    for ( var j = 0; j < Mall.all.length; j++) {
+    for (var j = 0; j < Mall.all.length; j++) {
         var liEl = document.createElement("li");
         ulEl.appendChild(liEl);
         liEl.textContent = `${Mall.all[j].name} had ${Mall.all[j].votes} votes and was shown ${Mall.all[j].views} times`;
-        
+        labels.push(Mall.all[j].name);
+        votes.push(Mall.all[j].votes);
+        views.push(Mall.all[j].views);
     }
     
+    var ctx = document.getElementById("myChart").getContext("2d");
+
+    var voteData = {
+        label: "# of Votes",
+        data: votes,
+        backgroundColor: "#404040"
+    };
+
+    var viewsData = {
+        label: "# of Views",
+        data: views,
+        backgroundColor: "#0040ff"
+    };
+
+    var labelsInfo = {
+        labels: labels,
+        datasets: [voteData, viewsData]
+    };
+
+    var chartOptions = {
+        scales: {
+            yAxes: [
+                {
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }
+            ]
+        }
+    };
+
+    var myChart = new Chart(ctx, {
+        type: "bar",
+        data: labelsInfo,
+        options: chartOptions
+    });
+
+
 }
 
 
@@ -110,3 +154,6 @@ function list (){
 function randomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+
+
