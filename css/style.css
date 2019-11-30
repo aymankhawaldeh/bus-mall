@@ -27,15 +27,30 @@ border-style: solid;
     border-radius: 30px;
     border-style: solid;
 
-
-
-
  }
- html{
+ /* html{
      background-color: gray;
- }
+ } */
  body{
      text-align: center;
      font-family: 'Times New Roman', Times, serif;
      font-size: 30px;
  }
+
+video{
+    min-width: 120%;
+    min-height: 120%;
+    width: auto;
+    height: auto;
+    background-size: cover;
+}
+.wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+h1{
+    color: blue;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
