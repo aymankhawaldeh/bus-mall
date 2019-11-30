@@ -31,3 +31,11 @@ border-style: solid;
 
 
  }
+ html{
+     background-color: gray;
+ }
+ body{
+     text-align: center;
+     font-family: 'Times New Roman', Times, serif;
+     font-size: 30px;
+ }
